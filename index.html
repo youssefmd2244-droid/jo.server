@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JO.URL | السيرفر المتكامل</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="main-header">
+            <div class="brand">JO<span>.URL</span></div>
+            <div id="status" class="status-bar">نظام التشغيل الذكي جاهز</div>
+        </header>
+
+        <div class="card player-section">
+            <div class="player-wrapper" id="videoContainer">
+                <video id="videoPlayer" controls playsinline crossorigin="anonymous">
+                    <source src="" type="video/mp4">
+                </video>
+                <button class="fullscreen-btn" onclick="requestFullScreen()">
+                    <i class="fas fa-expand"></i> تكبير الشاشة
+                </button>
+            </div>
+        </div>
+
+        <div class="card input-section">
+            <div class="input-tabs">
+                <div class="tab-box">
+                    <h3><i class="fas fa-link"></i> تشغيل من رابط</h3>
+                    <input type="text" id="inputUrl" placeholder="ضع رابط الفيلم المباشر هنا...">
+                    <button onclick="playFromUrl()" class="btn-action">تشغيل الرابط</button>
+                </div>
+                
+                <div class="tab-box">
+                    <h3><i class="fas fa-file-upload"></i> رفع فيلم من الهاتف</h3>
+                    <input type="file" id="fileUpload" hidden accept="video/*">
+                    <button onclick="document.getElementById('fileUpload').click()" class="btn-action btn-blue">اختيار ملف</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card output-section">
+            <h3><i class="fas fa-magic"></i> أدوات التصدير الذكية</h3>
+            <div class="option-check">
+                <input type="checkbox" id="enableGenerate">
+                <label for="enableGenerate">هل تريد توليد الرابط المعدل (الرابط الدائم)؟</label>
+            </div>
+
+            <div id="resultArea" class="result-box" style="display:none;">
+                <p>تم توليد الرابط المعدل بنجاح:</p>
+                <div class="copy-container">
+                    <span id="generatedLink">جاري المعالجة...</span>
+                    <button onclick="copyLink()">نسخ الرابط</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
